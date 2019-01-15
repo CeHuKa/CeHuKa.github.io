@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Acerca de
-permalink: /acerca-de/
+title: About
+permalink: /About/
 ---
 
 ### César Augusto Huertas Kaleda
