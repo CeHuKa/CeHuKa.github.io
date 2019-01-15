@@ -1,9 +1,8 @@
 ---
 layout: post
-title: Workshop: Analítica con redes sociales - Twitter
+title: Workshop Analítica con redes sociales - Twitter
 ---
 
-Workshop: Analítica con redes sociales - Twitter
 
 ![_config.yml]({{ site.baseurl }}/images/config.png)
 
