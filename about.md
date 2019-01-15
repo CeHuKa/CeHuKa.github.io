@@ -4,12 +4,14 @@ title: About
 permalink: /about/
 ---
 
-Some information about you!
+### César Augusto Huertas Kaleda
 
-### More Information
+Ingeniero Eléctrico, MSc in Analytics. 
 
-A place to include any other types of information that you'd like to include about yourself.
+Habilidad en sistemas informáticos, análisis de información, aplicación de técnicas descriptivas, predictivas y prescriptivas para la toma de decisiones estratégicas (Analytics), la creación de ventajas competitivas y la generación de valor en las organizaciones.
 
-### Contact me
+Actualmente me desempeño en gestión de proyectos, transformación digital, rediseño de procesos centrados en información( Process Mining & Data Driven), gestión de la innovación, implementación de inteligencia artificial en procesos.
 
-[email@domain.com](mailto:email@domain.com)
+### Contacto
+
+[cesar.huertask@gmail.com](mailto:cesar.huertask@gmail.com)
