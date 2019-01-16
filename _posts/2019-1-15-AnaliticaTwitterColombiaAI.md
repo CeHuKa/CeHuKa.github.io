@@ -19,5 +19,6 @@ El mundo de la analítica es muy extenso y variado. Mediante aplicaciones sencil
 
 ### NodeXL
 
-* Entrar a <http://nodexl.codeplex.com> y descargar el archivo, pesa 100MB. 
-* Una vez descargado Hacer clic en *Ejecutar*. Si le preguntan por el *Microsoft Visual Studio 2010 Tools for Office Runtime (x86 and x64)*, haga clic en aceptar, también es necesario aceptar los términos y condiciones que le aparezcan.
+* Obtener NOdeXL, diligenciando este [formulario](https://www.nodexlgraphgallery.org/Pages/RegistrationBasic.aspx). A vuelta de correo recibiras un link para descargar el archivo. 
+* Una vez descargado Hacer clic en *Ejecutar*.
+* Si te pregunta por el *Microsoft Visual Studio 2010 Tools for Office Runtime (x86 and x64)*, aceptar, también es necesario aceptar los términos y condiciones que le aparezcan.
