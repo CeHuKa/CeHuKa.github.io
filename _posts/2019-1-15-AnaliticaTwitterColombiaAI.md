@@ -18,9 +18,11 @@ El mundo de la analítica es muy extenso y variado. Mediante aplicaciones sencil
 
 ### Complementos: NodeXL y Gephi
 
-* Obtener **NodeXL**, diligenciando este [formulario](https://www.nodexlgraphgallery.org/Pages/RegistrationBasic.aspx). A vuelta de correo recibiras un link para descargar el archivo *.exe*. 
+**NodeXL**
+* Obtenerlo diligenciando este [formulario](https://www.nodexlgraphgallery.org/Pages/RegistrationBasic.aspx). A vuelta de correo recibiras un link para descargar el archivo *.exe*. 
 * Una vez descargado Hacer clic en *Ejecutar*.
 * Si te pregunta por el *Microsoft Visual Studio*, aceptar, también es necesario aceptar los términos y condiciones que le aparezcan.
 
+**Gephi**
 * Instala [Gephi](https://gephi.org/) . Descargar el archivo e instala en tu equipo.
 
