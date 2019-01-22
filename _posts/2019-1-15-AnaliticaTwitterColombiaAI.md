@@ -26,3 +26,6 @@ El mundo de la analítica es muy extenso y variado. Mediante aplicaciones sencil
 **Gephi**
 * Instala [Gephi](https://gephi.org/) . Descargar el archivo e instala en tu equipo.
 
+**LostCircles (Opcional)**
+* Si tienes cuenta en [LostCircles](https://www.facebook.com/)
+* Instala el complemento de chrome [LostCircles](https://chrome.google.com/webstore/detail/lost-circles-social-netwo/ehpmfdlcppenimpibdifodjgfafkjhjl?hl=es-419.Como%20Tunear%20El%20Fondo%20De%20GooGleEspero) . Instala en tu equipo.
