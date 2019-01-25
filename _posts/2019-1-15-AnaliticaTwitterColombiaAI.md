@@ -34,8 +34,7 @@ El mundo de la analítica es muy extenso y variado. Mediante aplicaciones sencil
 
 Para el desarrollo del taller, haremos uso de las siguientes librerias, las cuales es recomendable tener instaladas previamente:
 
-```r 
-
+```{r}
 library(ggplot2)
 library(lubridate)
 
@@ -57,5 +56,4 @@ library(randomForest)
 library(mlbench)
 library(caret)
 library(pROC)
- 
 ```
