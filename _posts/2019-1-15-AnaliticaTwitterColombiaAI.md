@@ -29,3 +29,30 @@ El mundo de la analítica es muy extenso y variado. Mediante aplicaciones sencil
 **LostCircles (Opcional)**
 * Si tienes cuenta en [Facebook](https://www.facebook.com/) configura el lengujae de tu perfil a English(US)
 * Instala el complemento de chrome [LostCircles](https://chrome.google.com/webstore/detail/lost-circles-social-netwo/ehpmfdlcppenimpibdifodjgfafkjhjl?hl=es-419.Como%20Tunear%20El%20Fondo%20De%20GooGleEspero) . Instala en tu equipo.
+
+### Librerias
+
+Para el desarrollo del taller, haremos uso de las siguientes librerias, las cuales es recomendable tener instaladas previamente:
+
+
+library(ggplot2)
+library(lubridate)
+
+library(tm)
+library(tidyverse)
+library(tidytext)
+library(dplyr)
+library(quanteda)
+
+library(RColorBrewer)
+library(wordcloud)
+library(gridExtra)
+library(scales)
+
+library(rtweet)        
+library(httpuv)             
+
+library(randomForest)
+library(mlbench)
+library(caret)
+library(pROC)
