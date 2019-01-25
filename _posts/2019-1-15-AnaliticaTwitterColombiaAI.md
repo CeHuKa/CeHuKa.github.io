@@ -57,3 +57,6 @@ library(mlbench)
 library(caret)
 library(pROC)
 ```
+## Repositorio
+
+Este es el [Repositorio](https://github.com/CeHuKa/AnaliticaRS_COL.git) del taller, allí encontrarán los sets de datos. También durante el taller y al final dejaremos el código de lo que haremos.
