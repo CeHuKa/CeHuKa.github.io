@@ -3,7 +3,7 @@ layout: post
 title: "Analítica con redes sociales - S3: Descriptiva"
 ---
 
-**Objetivo**: En este script realizaremos la analítica descriptiva básica de las extracciones realizadas.
+**Objetivo**: En este script realizaremos la analítica descriptiva básica de las extracciones realizadas. Adicionalmente aplicaremos análisis de sentimiento a una base de tuits haciendo uso del paquete ```syuzhet```
 
 ## Descriptiva Básica de Time Lines
 
