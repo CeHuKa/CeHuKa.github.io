@@ -81,12 +81,18 @@ Realizaremos la autenticación con las claves de  nuestra [Twitter App](https://
 ### App
 
 appname <- "TUAPLICACION"
+
+### App
+
+appname <- "InceptionCol"
 ##Consumer API keys
 
 ### API key
-key <- "TU API KEY"
+key <- "efw1ZYnxZRZ3Qt0kKMJyFvPEB"
 ### API secret key
-secret <- "TU API SECRET KEY"
+secret <- "rhuOx6y9s8nN58wbKXFac685TDOTNIXmn32PKTIuEnykm5s0bd"
+
+```
 
 ```
 
@@ -114,8 +120,8 @@ token <- create_token(
   app = appname,
   consumer_key = key,
   consumer_secret = secret,
-  access_token = "TU ACCESS TOKEN",
-  access_secret = "TU ACCESS SECRET")
+  access_token = "943888858298638337-Du8GwFikyGmgnNMTZfWA2Eg2jeq59hP",
+  access_secret = "hdgIkpOZvP3qAB4YWR8cWl1TrCXEfw8Lihag5JXKIgIlc")
   
 ```
 
