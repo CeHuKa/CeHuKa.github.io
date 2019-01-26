@@ -153,8 +153,8 @@ Buscaremos tuits por palabra clave o *hastag*, etc. Esta opción retorna máximo
 mipalabra = "Digita tu palabra o palabras aca"
 tweets_KW <- search_tweets(mipalabra, n = 100, include_rts = FALSE)
 
-view(tweets_KW)
-columns(tweets_KW)
+View(tweets_KW)
+colnames(tweets_KW)
 
 ```
 Puedes observar toda la información que se obtiene.
