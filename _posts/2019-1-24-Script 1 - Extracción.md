@@ -12,6 +12,7 @@ Probaremos las diferentes opciones de extraccion que tenemos con esta API:
 * Extracción de Amigos (Friends) por usuario
 * Extracción de Seguidores (Followers) por usuario
 * Extracción de Usuarios por palabra clave en Bio
+* Extracción vía Stream API
 
 # Paso 0: Librerias y directorio de trabajo
 
