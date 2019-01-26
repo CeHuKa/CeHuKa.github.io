@@ -196,3 +196,132 @@ se analizan los bigramas que se utilizan de forma más diferenciada por cada cat
 ```{r}
 GG5
 ```
+
+## Análisis de sentimiento
+
+Se basa en relaciones estadísticas y de asociación, mas no en análisis lingüístico
+
+El análisis de sentimiento está basado en lexicons, vocabulario (diccionario). 
+
+Es un conjunto de palabras puntuadas positiva y negativamente
+
+```{r}
+#########################################################
+####### IMPORTAR DATOS
+#########################################################
+
+SA<- read_twitter_csv("ELN.csv", unflatten = FALSE)
+
+SA <- SA %>% select(status_id, created_at,
+                      screen_name,
+                      text,
+                      source,
+                      lang)
+
+SA <- SA %>% filter(SA$lang == "es")
+
+SA %>% group_by(SA$lang) %>% summarise(n = n())
+
+
+#########################################################
+####### LIMPIAR DATOS
+#########################################################
+# Retira caracteres extraños
+SA$text <- gsub("[[:cntrl:]]", " ", SA$text)
+# Retira URLs
+SA$text <- gsub("\\s?(f|ht)(tp)(s?)(://)([^\\.]*)[\\.|/](\\S*)", "", SA$text)
+# Retira menciones
+SA$text <- gsub("@\\w+", "", SA$text)
+# Todo a minuscula
+SA$text<- tolower(SA$text)
+# Eliminación de signos de puntuación
+SA$text <- removePunctuation(SA$text)
+# Eliminación de números
+SA$text <- removeNumbers(SA$text)
+# Eliminación de espacios en blanco múltiples
+SA$text <- stripWhitespace(SA$text)
+```
+
+Califica ocho "emociones": anger, anticipation, disgust, fear, joy, sadness, surprise, trust
+También el puntaje positivo o negativo.
+
+```{r}
+#########################################################
+####### ANALISIS DE SENTIMIENTO
+#########################################################
+library("syuzhet")
+
+#Transformamos la base de textos importados en un vector para
+#poder utilizar la función get_nrc_sentiment
+palabra.df <- as.vector(SA$text)
+
+#Aplicamos la función indicando el vector y el idioma y creamos
+#un nuevo data frame llamado emocion.df
+emocion.df <- get_nrc_sentiment(char_v = palabra.df, language = "spanish")
+
+#Unimos emocion.df con el vector tweets.df para ver como
+#trabajó la función get_nrc_sentiment cada uno de los tweets
+emocion.df2 <- cbind(SA, emocion.df)
+
+
+#Creamos un data frame en el cual las filas serán las emociones
+#y las columnas los puntajes totales
+
+#Empezamos transponiendo emocion.df
+emocion.df3 <- data.frame(t(emocion.df))
+
+#Sumamos los puntajes de cada uno de los tweets para cada emocion
+emocion.df3 <- data.frame(rowSums(emocion.df3))
+
+#Nombramos la columna de puntajes como cuenta
+names(emocion.df3)[1] <- "cuenta"
+
+#Dado que las emociones son los nombres de las filas y no una variable
+#transformamos el data frame para incluirlas dentro
+emocion.df3 <- cbind("sentimiento" = rownames(emocion.df3), emocion.df3)
+
+#Quitamos el nombre de las filas
+rownames(emocion.df3) <- NULL
+
+#Verificamos el data frame
+print(emocion.df3)
+
+```
+Generamos algunos gráficos para observar la clasificación
+
+```{R]
+#Primer gráfico: se detallaran las 8 emociones con sus puntajes respectivos
+sentimientos1 <- ggplot(emocion.df3[1:8,],
+                        aes(x = sentimiento,
+                            y = cuenta, fill = sentimiento)) + 
+  geom_bar(stat = "identity") +
+  labs(title = "Análisis de sentimiento \n Ocho emociones",
+       x = "Sentimiento", y = "Frecuencia") +
+  geom_text(aes(label = cuenta),
+            vjust = 1.5, color = "black",
+            size = 5) +
+  theme(plot.title = element_text(hjust = 0.5),
+        axis.text = element_text(size=12),
+        axis.title = element_text(size=14,face = "bold"),
+        title = element_text(size=20,face = "bold"),
+        legend.position = "none")
+print(sentimientos1)
+
+#Segundo gráfico: se detallan los puntajes para las valoraciones
+#positiva y negativa
+sentimientos2 <- ggplot(emocion.df3[9:10,], 
+                        aes(x = sentimiento,
+                            y = cuenta, fill = sentimiento)) + 
+  geom_bar(stat = "identity") +
+  labs(title = "Análisis de sentimiento \n Valoración positiva o negativa", 
+       x = "Sentimiento", y = "Frecuencia") +
+  geom_text(aes(label = cuenta),
+            vjust = 1.5, color = "black",
+            size = 5) +
+  theme(plot.title = element_text(hjust = 0.5),
+        axis.text = element_text(size=12),
+        axis.title = element_text(size=14,face = "bold"),
+        title = element_text(size=20,face = "bold"),
+        legend.position = "none")
+print(sentimientos2)
+```
