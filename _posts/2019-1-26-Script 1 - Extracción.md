@@ -65,7 +65,7 @@ setwd("C:/MyRScripts/2019/WANRS_COL_AI/Data/")
 
 ```
 
-# Paso 1: AUTENTICACION
+# Paso 1: Autenticación
 
 Realizaremos la autenticación con las claves de  nuestra [Twitter App](https://developer.twitter.com)
 
@@ -116,7 +116,7 @@ token <- create_token(
 ```
 
 
-# Paso 2:Publica un Tweet desde R
+# Paso 2: Publica un Tweet desde R
 
 Vamos a probar tu conexión publicando un tuit desde la consola de R
 
