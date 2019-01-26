@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Analítica con redes sociales - S2: MinText"
+title: "Analítica con redes sociales - S2: Text Mining"
 ---
 
 **Objetivo**: En este script realizaremos la minería de datos de la información que obtuvimos en el capítulo de extracción.
@@ -23,11 +23,12 @@ tmls<- read_twitter_csv("tmls_3.csv", unflatten = FALSE)
 Realizamos una selección de variables que utilizaremos para nuestro análisis.
 
 ```{r}
-DF <- tmls %>% select(created_at,
-                          screen_name,
-                          text,
-                          source,
-                          lang)
+DF <- tmls %>% select(status_id,
+                      created_at,
+                      screen_name,
+                      text,
+                      source,
+                      lang)
 ```
 
 ### Limpieza de texto
