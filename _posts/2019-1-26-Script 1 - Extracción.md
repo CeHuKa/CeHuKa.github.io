@@ -226,7 +226,7 @@ Para seguir más de 5000 cuentas las cuentas deben cumplir ciertos requisitos. E
 
 CuentaObj_fds <- get_friends("ColombiaAI")
 
-## lookup data on those accounts
+## Obtener la información de las cuentas
 CuentaObj_fds_data <- lookup_users(ColombiaAI_fds$user_id)
 
 ```
@@ -242,7 +242,7 @@ Buscaremos y descargaremos las cuentas que sigue un usuario específico.
 ## Obtener los IDs de usario que siguen a la cuenta objetivo
 CuentaObj_flw <- get_followers("ColombiaAI", n = 5000)
 
-## lookup data on those accounts
+## Obtener la información de las cuentas
 CuentaObj_flw_data <- lookup_users(CuentaObj_flw$user_id)
 
 ```
@@ -255,5 +255,86 @@ Buscaremos y descargaremos las cuentas que tienen alguna palabra clave en su bio
 ## search for users with #rstats in their profiles
 usrs <- search_users("Antropologo", n = 1000)
 ```
+### Otras funciones:
+
+* get_retweets
+* get_retweeters
+* get_trends
+* get_mentions
+* get_favorites
+
+
+# Paso 4:Explorar la Stream API
+
+La API de *Streaming* de Twitter permite el acceso casi en tiempo real a varios subconjuntos de datos de Twitter. 
+Se pueden obtener de varias maneras: por ID de usuario, por palabra clave, por muestreo aleatorio, por ubicación geográfica, etc. 
+
+### Busqueda aleatoria por tiempo
+
+```{r}
+## Busqueda por 30 segundos (default)
+StrTw <- stream_tweets("")
+```
+
+### Busqueda aleatoria por palabra clave
+
+```{r}
+## stream tuits sobre una palabra clave por el tiempo definido
+stream_tweets(
+  "transmilenio",
+  timeout = 30,
+  file_name = "STRtweetsabout.json",
+  parse = FALSE
+)
+
+## Leer los datos
+STRtweets <- parse_stream("STRtweetsabout.json")
+```
+
+# Paso 5:Loop manejando el Rate limit
+
+Los límites de la API de Twitter limitan el número de Tuits a 18,000 cada 15 minutos. Para obtener más, se establece ```retryonratelimit = TRUE``` y rtweet esperará a que se restablezca el límite de velocidad. 
+
+Se debe tener en cuenta el tiempo que tardará la descarga al aplicar estos limites. Por ejmplo 2 millones de tuits tardarían mínimo 2 horas.
+
+Así mismo seguirá aplicando el límite de 9 días como máximo.
+
+```{r}
+## retryonratelimit - Loop manejando el Rate limit
+
+# Busqueda de 65,000 tweets por palabra clave
+# TT recientes 20190125
+
+TransMilenio <- search_tweets("TransMilenio", n = 65000, retryonratelimit = TRUE, include_rts = FALSE)
+Copa <- search_tweets("Copa America", n = 65000, retryonratelimit = TRUE, include_rts = FALSE)
+ELN <- search_tweets("ELN", n = 65000, retryonratelimit = TRUE, include_rts = FALSE)
+
+```
+
+# Exportar los datos
+
+Hasta este punto hemos realizado varios ejemplos de extracción de datos haciendo uso del paquete rtweet.
+
+Podemos almacenar cualquiera de las descargas que realizamos para esto utilizaremos la función ``` write_as_csv```
+
+```{r}
+# Tuits palabras clave
+write_as_csv(tweets_KW, "tweets_KW.csv", prepend_ids = TRUE, na = "", fileEncoding = "UTF-8")
+#timelines
+write_as_csv(tmls, "tmls.csv", prepend_ids = TRUE, na = "", fileEncoding = "UTF-8")
+# Amigos de cuenta objetivo
+write_as_csv(CuentaObj_fds_data, "CuentaObj_fds_data.csv", prepend_ids = TRUE, na = "", fileEncoding = "UTF-8")
+# Seguidores de cuenta objetivo
+write_as_csv(CuentaObj_flw_data, "CuentaObj_flw_data.csv", prepend_ids = TRUE, na = "", fileEncoding = "UTF-8")
+# Usuarios por palabra clave en bio
+write_as_csv(usrs, "usrs.csv", prepend_ids = TRUE, na = "", fileEncoding = "UTF-8")
+```
+
+
+Podemos leer archivos *.csv* que hemos guardado con la función ``` read_twitter_csv```
+```{r}
+tmls<- read_twitter_csv("tmls.csv", unflatten = FALSE)
+```
+
 
 
