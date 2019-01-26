@@ -325,3 +325,4 @@ sentimientos2 <- ggplot(emocion.df3[9:10,],
         legend.position = "none")
 print(sentimientos2)
 ```
+Sentimiento  o   polaridad  o incluso el tipo de emoción no siempre resulta algo unívoco
