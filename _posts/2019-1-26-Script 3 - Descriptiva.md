@@ -1,3 +1,10 @@
+---
+layout: post
+title: "Analítica con redes sociales - S3: Descriptiva"
+---
+
+**Objetivo**: En este script realizaremos la analítica descriptiva básica de las extracciones realizadas.
+
 ## Descriptiva Básica de Time Lines
 
 ### Distribución temporal de los tweets
