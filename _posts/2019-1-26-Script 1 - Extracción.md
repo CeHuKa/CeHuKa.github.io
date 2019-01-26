@@ -9,6 +9,9 @@ Probaremos las diferentes opciones de extraccion que tenemos con esta API:
 
 * Extracción por palabra clave
 * Extracción de TL por usuario
+* Extracción de Amigos (Friends) por usuario
+* Extracción de Seguidores (Followers) por usuario
+* Extracción de Usuarios por palabra clave en Bio
 
 # Paso 0: Librerias y directorio de trabajo
 
@@ -209,6 +212,48 @@ ggplot(tmls, aes(x = as.Date(created_at), fill = screen_name)) +
   
 ```
 
+### Busqueda por Usuario: Amigos (Friends)
 
+Buscaremos y descargaremos las cuentas que sigue un usuario específico.
+
+El limite es de 15 de estas solicitudes por 15 minutos, que máximo traen 5000 amigos.
+
+Para seguir más de 5000 cuentas las cuentas deben cumplir ciertos requisitos. En consecuencia, la gran mayoría de los usuarios siguen menos de 5000 cuentas.
+
+
+```{r}
+## Obtener los IDs de usario que sigue la cuenta objetivo
+
+CuentaObj_fds <- get_friends("ColombiaAI")
+
+## lookup data on those accounts
+CuentaObj_fds_data <- lookup_users(ColombiaAI_fds$user_id)
+
+```
+
+### Busqueda por Usuario: Seguidores (Followers)
+
+Buscaremos y descargaremos las cuentas que sigue un usuario específico.
+
+5000, que es el número máximo de seguidores devueltos por una sola llamada. Permite hasta 15 de estas solicitudes cada 15 minutos, lpor tanto el número máximo de seguidores sin espera es de 75,000.
+
+```{r}
+
+## Obtener los IDs de usario que siguen a la cuenta objetivo
+CuentaObj_flw <- get_followers("ColombiaAI", n = 5000)
+
+## lookup data on those accounts
+CuentaObj_flw_data <- lookup_users(CuentaObj_flw$user_id)
+
+```
+
+### Busqueda por Usuario: Palabra clave en Bio
+
+Buscaremos y descargaremos las cuentas que tienen alguna palabra clave en su biografía.
+
+```{r}
+## search for users with #rstats in their profiles
+usrs <- search_users("Antropologo", n = 1000)
+```
 
 
