@@ -101,7 +101,7 @@ Ahora la repetiremos con los otros dos pares de opciones.
 El uso de palabras unitarias limita la capacidad del análisis, en realidad el lenguaje se crea por combinaciones no aleatorias de palabras, es decir, determinadas palabras tienden a utilizarse de forma conjunta. 
 Para capturar esto en el análisis, aplicaremos el mismo enfoque pero observando por bigramas es decir pares de palabras.
 
-```{r }
+```{r}
 #########################################################
 ####### METODOS POR BIGRAMAS
 #########################################################
@@ -133,7 +133,7 @@ remove(DF_bigram_sep)
 ```
 Ya obtuvimos los bigramas sin stop words, a continuación realizaremos el mismo análisis gráfico.
 
-```{r }
+```{r}
 #Representación gráfica de las frecuencias
 GG4<-DF_bigram %>% group_by(screen_name, bigrama) %>% count(bigrama) %>% group_by(screen_name) %>%
   top_n(10, n) %>% arrange(screen_name, desc(n)) %>%
@@ -147,7 +147,7 @@ GG4<-DF_bigram %>% group_by(screen_name, bigrama) %>% count(bigrama) %>% group_b
 ```
 Ahora analizaremos los bigramas que se utilizan de forma más diferenciada
 
-```{r }
+```{r}
 # Pivotaje y despivotaje
 DF_bigram_spread <- DF_bigram %>% group_by(screen_name, bigrama) %>% count(bigrama) %>%
   spread(key = screen_name, value = n, fill = 0, drop = TRUE)
@@ -187,7 +187,7 @@ remove(DF_bigram_unpivot)
 
 La siguiente gráfica presenta el *top 10* de bigramas más utilizados por cada categoria:
 
-```{r }
+```{r}
 GG4
 ```
 
@@ -289,7 +289,7 @@ print(emocion.df3)
 ```
 Generamos algunos gráficos para observar la clasificación
 
-```{R]
+```{r]
 #Primer gráfico: se detallaran las 8 emociones con sus puntajes respectivos
 sentimientos1 <- ggplot(emocion.df3[1:8,],
                         aes(x = sentimiento,
